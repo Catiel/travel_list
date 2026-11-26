@@ -1,0 +1,11 @@
+html, body { min-height: 100%; }
+.standalone-body { margin: 0; background: #dfe6e3; }
+.standalone-shell { display: grid; place-items: center; min-height: 100dvh; padding: 24px; }
+.standalone-phone { position: relative; width: min(390px, 100%); height: min(844px, calc(100dvh - 48px)); min-height: 620px; overflow: hidden; background: #f6f7f8; border: 7px solid #1c2023; border-radius: 46px; box-shadow: 0 2px 0 rgba(255,255,255,.16) inset, 0 24px 60px rgba(22,30,35,.16); }
+.standalone-phone::before { content: ""; position: absolute; z-index: 40; top: 8px; left: 50%; width: 88px; height: 23px; transform: translateX(-50%); background: #1c2023; border-radius: 0 0 15px 15px; }
+.standalone-phone::after { content: ""; position: absolute; z-index: 40; bottom: 7px; left: 50%; width: 112px; height: 4px; transform: translateX(-50%); background: rgba(25,28,30,.82); border-radius: 4px; }
+@media (max-width: 480px) {
+  .standalone-shell { display: block; min-height: 100dvh; padding: 0; }
+  .standalone-phone { width: 100%; height: 100dvh; min-height: 100dvh; border: 0; border-radius: 0; box-shadow: none; }
+  .standalone-phone::before, .standalone-phone::after { display: none; }
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>行李清单优化 - 原型工作台</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./css/prototype.css">
+    <link rel="stylesheet" href="./css/workbench.css">
+    <script src="./assets/vendor/html-to-image.js" defer></script>
+    <script src="./js/prototype-data.js" defer></script>
+    <script src="./js/prototype-renderer.js" defer></script>
+    <script src="./js/workbench.js" defer></script>
+  </head>
+  <body>
+    <div class="workbench">
+      <header class="workbench-header">
+        <div class="version-heading">
+          <span class="brand-mark">G</span>
+          <div><h1>行李清单优化</h1><span>V1-团队行李</span></div>
+          <button id="version-info-button" class="quiet-button" type="button">版本说明</button>
+        </div>
+        <nav class="view-tabs" aria-label="工作台视图">
+          <button class="active" type="button" data-view="demo" aria-selected="true">动态演示</button>
+          <button type="button" data-view="static" aria-selected="false">全部页面</button>
+        </nav>
+        <a class="standalone-link" href="./prototype/index.html" target="_blank" rel="noopener">独立打开原型 ↗</a>
+      </header>
+
+      <main class="workbench-main">
+        <section id="demo-view" class="demo-workspace" aria-label="动态演示">
+          <aside id="page-panel" class="page-panel">
+            <div class="panel-heading"><div><small>页面目录</small><b>功能模块</b></div><button class="collapse-button" data-collapse="left" aria-label="收起页面目录" title="收起页面目录">‹</button></div>
+            <nav id="page-tree" class="page-tree"></nav>
+          </aside>
+          <button id="open-left" class="edge-opener left" aria-label="展开页面目录" title="展开页面目录" hidden>›</button>
+
+          <section class="preview-panel">
+            <div class="preview-toolbar">
+              <select id="state-select" aria-label="选择页面状态"></select>
+              <button id="download-button" class="download-button" type="button"><span aria-hidden="true">↓</span> 下载图片</button>
+            </div>
+            <div class="preview-stage">
+              <div id="phone-frame" class="phone-frame"><div id="demo-root" class="phone-content"></div></div>
+            </div>
+          </section>
+
+          <button id="open-right" class="edge-opener right" aria-label="展开页面详情" title="展开页面详情" hidden>‹</button>
+          <aside id="detail-panel" class="detail-panel">
+            <div class="panel-heading"><div><small>页面详情</small><b id="detail-title">行李清单</b></div><button class="collapse-button" data-collapse="right" aria-label="收起页面详情" title="收起页面详情">›</button></div>
+            <div id="detail-tabs" class="detail-tabs" role="tablist"></div>
+            <div id="detail-content" class="detail-content"></div>
+          </aside>
+        </section>
+
+        <section id="static-view" class="static-view" aria-label="静态页面" hidden>
+          <div class="static-intro"><div><small>版本全景</small><h2>全部页面、弹窗与状态</h2></div><p>页面按真实顺序从左到右排列，保留当前评审需要的有效页面与状态。</p></div>
+          <div id="static-canvas" class="static-canvas"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="version-dialog" class="version-dialog">
+      <form method="dialog"><button class="dialog-close" aria-label="关闭" title="关闭">×</button></form>
+      <small>V1-团队行李</small>
+      <h2>版本说明</h2>
+      <p>本版本按旧版最终生效规则恢复单人计划、多人计划和行李管理三个模块，并将页面、弹窗与各自状态独立建模。</p>
+      <dl><div><dt>画面范围</dt><dd>3 个模块，28 个独立页面或弹窗画面</dd></div><div><dt>数据关系</dt><dd>动态演示与静态页面共用页面、弹窗、状态和跳转数据</dd></div><div><dt>历史版本</dt><dd>旧版 HTML 独立保存在功能目录的历史版本中</dd></div></dl>
+    </dialog>
+    <div id="workbench-toast" class="workbench-toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
